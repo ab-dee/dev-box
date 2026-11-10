@@ -24,11 +24,13 @@ docker run -d \
   dev-box
 ```
 
-## Use
+## Open a shell in the running container
+
+The container runs in the background, so open a shell with `docker exec`:
 
 ```bash
-docker exec -it dev-box bash          # interactive shell
-docker exec dev-box python3 --version # one-off command
+docker exec -it dev-box bash          # interactive shell; type exit to leave
+docker exec dev-box python3 --version # run one command without a shell
 docker exec dev-box whoami            # expect: dev
 ```
 
