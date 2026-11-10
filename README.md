@@ -5,8 +5,8 @@ A blank Ubuntu 24.04 sandbox. The container runs as the non-root user `dev` (uid
 ## Files
 
 - `Dockerfile`: Ubuntu 24.04 base with common dev tools (git, curl, Python 3, Node.js, build-essential, jq, and others), plus the `dev` user. Idles with `sleep infinity`.
-- `workspace/`: host folder mounted at `/workspace` in the container. Holds persistent work. Git-ignored.
-- `.gitignore`: excludes `workspace/`.
+- `data/`: host folder mounted at `/data` in the container. Holds persistent work. Git-ignored.
+- `.gitignore`: excludes `data/`.
 
 ## Build
 
@@ -20,7 +20,7 @@ docker build -t dev-box .
 docker run -d \
   --name dev-box \
   --restart unless-stopped \
-  -v "$(pwd)/workspace:/workspace" \
+  -v "$(pwd)/data:/data" \
   dev-box
 ```
 
@@ -38,7 +38,7 @@ docker exec dev-box whoami            # expect: dev
 docker logs -f dev-box
 docker stop dev-box
 docker start dev-box
-docker rm -f dev-box                  # remove container; ./workspace is kept
+docker rm -f dev-box                  # remove container; ./data is kept
 ```
 
 ## Options

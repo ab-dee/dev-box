@@ -34,7 +34,7 @@ RUN userdel -r ubuntu 2>/dev/null || true \
 
 USER dev
 ENV HOME=/home/dev
-WORKDIR /workspace
+WORKDIR /data
 
 # Keep the container alive; tools connect with `docker exec`.
 CMD ["sleep", "infinity"]
